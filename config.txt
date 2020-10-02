@@ -1,0 +1,10 @@
+## on workstations
+
+export TURTLEBOT3_MODEL=burger; export ROS_IP=192.168.1.222; export ROS_HOSTNAME=192.168.1.222; export ROS_MASTER_URI=http://192.168.1.104:11311
+
+
+apt install ros-melodic-rqt-common-plugins ros-melodic-rqt-robot-steering ros-melodic-dwa-local-planner
+
+## on turtlebots
+
+timedatectl set-ntp true
