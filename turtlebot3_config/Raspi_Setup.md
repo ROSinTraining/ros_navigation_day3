@@ -38,6 +38,28 @@ Reference [Turtlebot3 Emanual](https://emanual.robotis.com/docs/en/platform/turt
     ![netconfig](images/ros2_sbc_netcfg.png)
 
     Save the file with *Ctrl+S* and exit with *Ctrl+X*.
+
+    ![netconfigif](images/network_setup.gif)
+
+    ```
+    # My Turtlebot3 Network Configuration
+    network:
+        version: 2
+        renderer: networkd
+        ethernets:
+        eth0:
+            dhcp4: yes
+            dhcp6: yes
+            optional: true
+        wifis:
+        wlan0:
+            dhcp4: no
+            dhcp6: yes
+            addresses: [xxx.xxx.xxx.xxx/24]
+            access-points:
+            "my-wifi-connection-name":
+                password: "my-connection-password"
+    ```
 9. Reboot the Raspberry Pi.
     `sudo reboot`
 10. Set the *systemd* to prevent boot-up delay even if there is no network at startup. Run the command below to set mask the *systemd* process using the following command.
