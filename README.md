@@ -1,5 +1,7 @@
 # ros_navigation_day3
 
+For Turtlebot3 Configuration refere [here](turtlebot3_config/README.md)
+
 # Acknowledgement
 <a href="http://rosin-project.eu">
   <img src="http://rosin-project.eu/wp-content/uploads/rosin_ack_logo_wide.png" 
