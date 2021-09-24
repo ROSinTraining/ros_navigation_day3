@@ -55,11 +55,32 @@ Reference [Turtlebot3 Emanual](https://emanual.robotis.com/docs/en/platform/turt
         wlan0:
             dhcp4: no
             dhcp6: yes
-            addresses: [xxx.xxx.xxx.xxx/24]
+            addresses: [192.168.1.xxx/24]
+            gateway4: 192.168.1.1
+            nameservers:
+                addresses: [8.8.8.8, 1.1.1.1] #Google DNS
             access-points:
-            "my-wifi-connection-name":
+            ROS-I Academy:                      # SSID
                 password: "my-connection-password"
     ```
+    * *Time and Date Synchronization*: 
+    ```
+    $ systemctl unmask systemd-timesyncd.service
+    $ systemctl restart systemd-timsyncd.service
+    $ timedatectl
+    ```
+    This should display the proper time. 
+
+    ![timedate_def](images/timedate_def.png)
+
+    If timezone is not selected properly then select your timezone using
+    ```
+    $ timedatectl list-timezones
+    $ timedatectl set-timezone Europe/Berlin
+    ```
+
+    ![timedate](images/finaltimedate.png)
+
 9. Reboot the Raspberry Pi.
     `sudo reboot`
 10. Set the *systemd* to prevent boot-up delay even if there is no network at startup. Run the command below to set mask the *systemd* process using the following command.
