@@ -146,12 +146,36 @@ Reference [Turtlebot3 Emanual](https://emanual.robotis.com/docs/en/platform/turt
     $ echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
     $ source ~/.bashrc
     ```
+
+    * **Galactic**
+    ```
+    $ sudo apt install python3-argcomplete python3-colcon-common-extensions libboost-system-dev build-essential
+    $ sudo apt install ros-galactic-hls-lfcd-lds-driver
+    $ sudo apt install ros-galactic-turtlebot3-msgs
+    $ sudo apt install ros-galactic-dynamixel-sdk
+    $ mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src
+    $ git clone -b galactic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+    $ cd ~/turtlebot3_ws/src/turtlebot3
+    $ rm -r turtlebot3_cartographer turtlebot3_navigation2
+    $ cd ~/turtlebot3_ws/
+    $ echo 'source /opt/ros/foxy/setup.bash' >> ~/.bashrc
+    $ source ~/.bashrc
+    $ colcon build --symlink-install --parallel-workers 1
+    $ echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
+    $ source ~/.bashrc
+    ```
 15. USB Port Setting
     * **Noetic**
     ```
     $ rosrun turtlebot3_bringup create_udev_rules
     ```
     * **Foxy**
+    ```
+    $ sudo cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
+    $ sudo udevadm control --reload-rules
+    $ sudo udevadm trigger
+    ```
+    * **Galactic**
     ```
     $ sudo cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
     $ sudo udevadm control --reload-rules
